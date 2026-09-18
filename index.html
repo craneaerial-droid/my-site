@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>my-site</title>
+<meta name="description" content="A site in progress, built with Claude Code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16181d;
+    --paper: #f6f4ef;
+    --line: #dcd8cd;
+    --accent: #b5502e;
+    --muted: #63625c;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  header.top {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  header.top .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  nav.top a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav.top a:hover { border-bottom-color: var(--ink); }
+
+  main.hero {
+    padding: 5.5rem 0 4rem;
+  }
+
+  main.hero .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: end;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1rem;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .lede {
+    margin: 1.75rem 0 0;
+    max-width: 34ch;
+    font-size: 1.05rem;
+    color: var(--muted);
+  }
+
+  .status-card {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 1.5rem;
+    align-self: stretch;
+  }
+
+  .status-card p.label {
+    margin: 0 0 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .status-card p.value {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+
+  section.about {
+    border-top: 1px solid var(--line);
+    padding: 3.5rem 0;
+  }
+
+  section.about .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 3rem;
+  }
+
+  section.about h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  section.about p {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+
+  section.about p:last-child { margin-bottom: 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 760px) {
+    main.hero .grid,
+    section.about .grid {
+      grid-template-columns: 1fr;
+    }
+    main.hero { padding: 3.5rem 0 3rem; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    h1 { animation: rise 0.5s ease-out; }
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="mark">my-site</span>
+    <nav class="top">
+      <a href="https://github.com/craneaerial-droid/my-site">Source</a>
+    </nav>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <p class="eyebrow">Deployed via GitHub Actions</p>
+        <h1>This site is live.</h1>
+        <p class="lede">
+          A working GitHub Pages deployment, built and shipped from this
+          repository. The next step is real content.
+        </p>
+      </div>
+      <div class="status-card">
+        <p class="label">Status</p>
+        <p class="value">Building in public</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="about">
+  <div class="wrap grid">
+    <h2>What this is</h2>
+    <div>
+      <p>
+        This page exists to confirm the pipeline works end to end: push to
+        <code>main</code>, GitHub Actions builds and uploads the site,
+        GitHub Pages serves it. Nothing more is claimed here yet.
+      </p>
+      <p>
+        Design standards for whatever comes next live in
+        <a href="CLAUDEwebdesign%20copy.md">CLAUDEwebdesign copy.md</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026
+  </div>
+</footer>
+
+</body>
+</html>
