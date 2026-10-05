@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap for craneaerial.com
+Sitemap: https://craneaerial.com/sitemap.xml
