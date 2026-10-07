@@ -179,7 +179,7 @@
       else if (wide && v.dataset.clipLg)     name = v.dataset.clipLg;
       [['webm', 'video/webm'], ['mp4', 'video/mp4']].forEach(function (t) {
         var s = document.createElement('source');
-        s.src  = 'assets/video/' + name + '.' + t[0];
+        s.src  = name + '.' + t[0];
         s.type = t[1];
         v.appendChild(s);
       });
