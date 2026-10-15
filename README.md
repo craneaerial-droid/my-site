@@ -1,16 +1,24 @@
-# Crane Aerial & 3D Imaging — craneaerial.com
+# Crane Productions — craneaerial.com
+
+*Aerial photography and 3D imaging for people and businesses.*
 
 A single-page static site. No build step, no framework, no dependencies. The only
 third-party request is Google Fonts.
 
+**Every file sits at the repo root — no folders.** That is deliberate: GitHub's
+drag-and-drop uploader flattens folders but does not rewrite the paths inside the
+HTML, so a nested tree uploaded that way 404s on every stylesheet, script and
+video. Flat survives the uploader intact.
+
 ```
 index.html            the page
-assets/css/site.css   one stylesheet, documented by section
-assets/js/config.js   ALL copy, pricing, services and contact data — edit this
-assets/js/app.js      nav, reveals, the video ladder, the contact form
-assets/js/quote.js    six-step calculator, booking, scope agreement
-assets/video/         six encodes of two clips, plus posters
-assets/img/           the aerial still, favicon, social card
+site.css              one stylesheet, documented by section
+config.js             ALL copy, pricing, services and contact data — edit this
+app.js                nav, reveals, the video ladder, the contact form
+quote.js              six-step calculator, booking, scope agreement
+kc-dusk*.{webm,mp4}   hero, four tiers; kc-city* the work panel, two
+*.webp                posters and the aerial still
+og.jpg, favicon.svg   social card, icon
 CNAME                 craneaerial.com — GitHub Pages custom domain
 ```
 
@@ -21,20 +29,51 @@ MX, SPF and DKIM records are untouched by any of this.
 
 ---
 
+
+## 0. What changed in the redesign
+
+Rebranded from "Crane Aerial & 3D Imaging" to **Crane Productions**. The legal
+entity (`SITE.legalName`) is unchanged — it is still Crane Aerial Production LLC
+and still appears in the footer and the schema.
+
+Restructured around **three service categories**, weighted by `rank` in
+`config.js`: aerial photography and drone video, then 3D imaging and mapping,
+then standard photography as the deliberately smaller one. Each carries its own
+"who it is for" rows and its own route into a quote.
+
+"Why aerial" was replaced by **We love to travel** — Chicago, St. Louis and
+Kansas City named as the three metros, with the travel terms stated in the same
+breath so "we travel anywhere" can't be read as "we travel anywhere for free".
+The metro list renders from `SITE.metros`; the terms live in `SITE.areaLong`.
+
+Unchanged and verified still working: the six-step calculator, the Google
+Calendar booking link, the scope agreement, the contact form, the phone number,
+and the dark/bone section rhythm.
+
+**A bug fixed on the way through:** the JSON-LD block had a doubled `<script>`
+tag inherited from an earlier rebuild. It now parses clean.
+
+---
 ## 1. The only file you normally edit
 
 `assets/js/config.js`. Service names, descriptions, every price, the phone number,
 the booking link, the service-area wording. Change a number there and it changes
 everywhere it appears — the calculator, the estimate, the scope agreement.
 
-Two values are still unset:
+`SITE.email` is set to `info@craneaerial.com`. The contact block's email row and the
+mailto fallback button both switch on from that one value. **The mailbox has to
+actually exist** — if nothing is receiving at that address, the site is inviting
+mail into a void, which is the one failure mode nothing in the code can detect.
+It is a Google Workspace domain, so the address is either a user or an alias on an
+existing user; add it in Workspace admin and send yourself a test.
+
+One value is still unset:
 
 | Value | Effect while unset |
 |---|---|
-| `SITE.email` | The email row stays hidden. It does not render blank. |
 | `FORMS.endpoint` | Every form states plainly that nothing was sent, and hands the details back. No form ever fakes a success. |
 
-Fill them in and both behaviours switch on by themselves.
+Fill it in and the forms start posting by themselves.
 
 ---
 

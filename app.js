@@ -40,6 +40,16 @@
     $$('[data-site="areaShort"]').forEach(function (e) { e.textContent = C.SITE.areaShort; });
     $$('[data-site="areaLong"]').forEach(function (e) { e.textContent = C.SITE.areaLong; });
 
+    /* The three metros, from config. One list, one source of truth. */
+    var metros = $('#metro-list');
+    if (metros && C.SITE.metros) {
+      metros.innerHTML = C.SITE.metros.map(function (m) {
+        var bits = m.split(',');
+        return '<li><b>' + esc(bits[0]) + '</b>' +
+               (bits[1] ? '<span>' + esc(bits[1].trim()) + '</span>' : '') + '</li>';
+      }).join('');
+    }
+
     if (!blank(C.SITE.phone)) {
       var p = $('[data-site="phoneLink"]');
       if (p) {
@@ -74,21 +84,43 @@
     var list = $('#svc-list');
     if (!list) return;
 
+    /* A primary service gets the full treatment: the line, the chips, and the
+       three "who it is for" rows. The secondary one gets the line and chips
+       only, which is how the layout keeps ground photography from competing
+       with the two services the business actually leads with. */
     list.innerHTML = C.SERVICES.map(function (s, i) {
       var n = String(i + 1);
+      var primary = s.rank === 'primary';
+
       var items = (s.items || []).map(function (x) {
         return '<li>' + esc(x) + '</li>';
       }).join('');
-      return '<div class="svc__row" data-r>' +
+
+      var who = (s['for'] || []).map(function (f) {
+        return '<div class="who__row">' +
+                 '<b>' + esc(f[0]) + '</b>' +
+                 '<span>' + esc(f[1]) + '</span>' +
+               '</div>';
+      }).join('');
+
+      return '<article class="svc__row' + (primary ? ' svc__row--primary' : '') +
+               '" id="svc-' + esc(s.id) + '" data-r>' +
                '<span class="num svc__n">' + (n.length < 2 ? '0' + n : n) + '</span>' +
-               '<h3 class="svc__name">' + esc(s.name) + '</h3>' +
-               '<div>' +
-                 '<p class="svc__line">' + esc(s.line) + '</p>' +
+               '<div class="svc__head">' +
+                 '<h3 class="svc__name">' + esc(s.name) + '</h3>' +
                  (items ? '<ul class="svc__list">' + items + '</ul>' : '') +
                '</div>' +
-             '</div>';
+               '<div class="svc__body">' +
+                 '<p class="svc__line">' + esc(s.line) + '</p>' +
+                 (who ? '<div class="who">' + who + '</div>' : '') +
+                 (s.caveat ? '<p class="caveat">' + esc(s.caveat) + '</p>' : '') +
+                 '<p class="svc__cta"><a href="#quote">Build an estimate</a>' +
+                 '<a href="#contact">or just ask</a></p>' +
+               '</div>' +
+             '</article>';
     }).join('');
   }
+
 
   /* ---------------------------------------------------------- 3. reveals */
   /* Opacity and a small rise. That is the entire animation vocabulary.

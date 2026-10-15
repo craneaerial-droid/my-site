@@ -641,8 +641,12 @@ select {
 .foot { padding-block: var(--s6) var(--s5); border-top: 1px solid var(--hair); display: grid; gap: var(--s4); }
 @media (min-width: 760px) { .foot { grid-template-columns: 1fr auto; align-items: end; } }
 .foot__links { display: flex; flex-wrap: wrap; gap: var(--s4); }
+/* min-width as well as min-height: "Work" and "Book" set to 43 and 40
+   pixels wide, so the targets were tall enough and still too thin to hit.
+   Centred, so the short labels stay aligned with the long ones. */
 .foot__links a {
-  display: inline-flex; align-items: center; min-height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; min-width: 44px;
   font-size: var(--t-label); letter-spacing: .2em; text-transform: uppercase; color: var(--grey);
 }
 .foot__links a:hover { color: var(--bone); }
@@ -666,3 +670,77 @@ select {
   a { text-decoration: underline; }
 }
 
+
+/* --- 19. SERVICES, REBUILT -----------------------------------------------
+   Three categories at two weights. A primary row gets a wide body column with
+   the "who it is for" rows underneath; the secondary one collapses to a single
+   column so ground photography reads as the smaller offer it is.          */
+.svc__row { align-items: start; }
+.svc__head { display: grid; gap: var(--s2); align-content: start; }
+.svc__body { display: grid; gap: var(--s4); }
+
+@media (min-width: 900px) {
+  .svc__row { grid-template-columns: 3.5rem minmax(220px, .7fr) minmax(0, 1.3fr); }
+  .svc__row--primary { padding-block: clamp(32px, 4vw, 60px); }
+}
+
+/* who the work is for — a definition list, not a card grid */
+.who { display: grid; gap: 0; border-top: 1px solid var(--hair); }
+.band .who { border-top-color: var(--rule-l); }
+.who__row {
+  display: grid; gap: 2px var(--s4); padding: var(--s3) 0;
+  border-bottom: 1px solid var(--hair);
+}
+.band .who__row { border-bottom-color: var(--rule-l); }
+@media (min-width: 640px) {
+  .who__row { grid-template-columns: minmax(0, 7rem) minmax(0, 1fr); align-items: baseline; }
+}
+.who__row b {
+  font-family: var(--f-body); font-size: var(--t-label); font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--bone);
+}
+.band .who__row b { color: var(--ink); }
+.who__row span { color: var(--grey); font-size: .95rem; }
+.band .who__row span { color: var(--mid); }
+
+/* the two links that close every service */
+/* Row gap is 24px, not 12px, because each link below carries a 44px tall
+   invisible hit area centred on 22px of text — 11px of overhang top and
+   bottom. Anything under 22px of row gap and two stacked links fight over
+   the same thumb. */
+.svc__cta { display: flex; flex-wrap: wrap; gap: 24px var(--s4); align-items: baseline; }
+.svc__cta a {
+  font-size: var(--t-label); letter-spacing: .18em; text-transform: uppercase;
+  font-weight: 600; color: var(--signal);
+  border-bottom: 1px solid var(--ui); padding-bottom: 3px;
+  transition: border-color var(--micro) var(--ease-o);
+  position: relative;
+}
+/* The underline is the signature, so it stays tight to the text. Padding would
+   drag it 11px south; this grows the touch target instead and leaves the
+   drawing alone. */
+.svc__cta a::after {
+  content: ''; position: absolute; left: 0; right: 0;
+  top: 50%; transform: translateY(-50%); min-height: 44px; height: 100%;
+}
+.svc__cta a:hover { border-bottom-color: var(--signal); }
+.svc__cta a + a { color: var(--grey); border-bottom-color: transparent; }
+.svc__cta a + a:hover { color: var(--bone); border-bottom-color: var(--ui); }
+
+/* --- 20. THE METROS ------------------------------------------------------ */
+.metros { border-top: 1px solid var(--rule-l); }
+.metros li {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s3);
+  padding: var(--s4) 0; border-bottom: 1px solid var(--rule-l);
+}
+.metros b {
+  font-family: var(--f-display); font-weight: 800;
+  font-size: clamp(1.3rem, 2.6vw, 2rem); letter-spacing: -.02em; color: var(--ink);
+}
+.metros span {
+  font-size: var(--t-label); letter-spacing: .2em; text-transform: uppercase; color: var(--mid);
+}
+
+/* The wordmark is two words rendered as two elements; HTML collapses the
+   whitespace between them, so the gap has to be a margin, not a space. */
+.nav__tail { margin-left: .3em; font-weight: 500; color: var(--grey); }

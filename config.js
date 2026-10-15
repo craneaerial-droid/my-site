@@ -15,8 +15,9 @@ window.CRANE = (function () {
   /* ---------------------------------------------------------------- brand */
   var SITE = {
     /* the customer-facing brand — used everywhere on the site */
-    name:      'Crane Aerial & 3D Imaging',
-    short:     'Crane Aerial',
+    name:      'Crane Productions',
+    short:     'Crane',
+    tagline:   'Aerial photography and 3D imaging for people and businesses',
     /* the registered entity — used only where a legal name belongs */
     legalName: 'Crane Aerial Production LLC',
 
@@ -29,13 +30,18 @@ window.CRANE = (function () {
         short drive. */
     city:      'Kansas City',
     state:     'Missouri',
-    areaShort: 'Wherever the site is',
-    areaLong:  'Based in Kansas City, Missouri, and travelling for work. Beyond a short drive from home base, a travel charge is added to the estimate and quoted with the job \u2014 it is not built into the package prices.',
+    /* The three metros we work in regularly. Not a fence — `areaLong` is the
+       wording customers read, and it says plainly that we travel. Travel costs
+       are never folded into a package price, so nobody is quoted a figure that
+       quietly assumes a short drive. */
+    metros:    ['Chicago, Illinois', 'St. Louis, Missouri', 'Kansas City, Missouri'],
+    areaShort: 'Chicago · St. Louis · Kansas City',
+    areaLong:  'Those three are where we work most. We travel for the right project \u2014 tell us where yours is. Depending on distance and scope, travel arrangements or additional expenses may need to be covered by the customer, and we agree that with you before anything is booked.',
 
     /* Fill these in and they appear everywhere. Leave them and they stay hidden. */
     phone:     '(816) 560-2380',
     phoneHref: '8165602380',
-    email:     '[YOUR EMAIL ADDRESS]',
+    email:     'info@craneaerial.com',
     domain:    'craneaerial.com',
 
     social: {
@@ -105,26 +111,46 @@ window.CRANE = (function () {
   };
 
   /* ------------------------------------------------------------ services */
+  /* ---------------------------------------------------------------- services
+     THREE CATEGORIES, IN ORDER OF WEIGHT. Aerial leads, 3D is the specialist
+     offer, ground photography is deliberately the small one. `rank` drives how
+     much room each gets on the page — don't reorder this array by hand, change
+     the rank and let the layout follow.
+
+     `for` is who the work is actually for. It is written to show range without
+     turning into a list of thirty industries: a couple of concrete examples per
+     line beats an exhaustive taxonomy nobody reads.                          */
   var SERVICES = [
-    { id: 'realestate',
-      name: 'Real Estate',
-      line: 'Exterior photography and video for listings, so a buyer knows the lot, the street and the neighbours before they ever drive out.',
-      items: ['Exterior photography', 'Listing video', 'Lot and surroundings'] },
+    { id: 'aerial',
+      rank: 'primary',
+      name: 'Aerial photography & drone video',
+      line: 'Stills, video, or both, flown to the shot you need. A wedding from above, a restaurant at golden hour, a roofline nobody wants to climb to, a site recorded the same way every month.',
+      items: ['Stills', 'Cinematic video', 'Events', 'Property', 'Documentation', 'Edited cuts'],
+      'for': [
+        ['Personal', 'Weddings and engagements, family gatherings, the milestones worth more than a phone photo.'],
+        ['Events', 'Festivals, concerts, corporate days, venues that need to show the crowd and the setting at once.'],
+        ['Business', 'Restaurants, local companies, agencies, developers, contractors, roofers, real estate and property teams.']
+      ] },
 
-    { id: 'inspections',
-      name: 'Inspections',
-      line: 'Close exterior documentation of roofs, structures and sites, flown so nobody has to go up a ladder to get the picture.',
-      items: ['Roofing', 'Construction', 'Property documentation'] },
+    { id: 'imaging',
+      rank: 'primary',
+      name: '3D imaging & mapping',
+      line: 'A gridded flight over the whole site, processed into an overhead map and a 3D visual model. Built for people who have to understand a space, not just look at a picture of it.',
+      items: ['Overhead site maps', '3D visual models', 'Gridded flights', 'Spatial documentation'],
+      'for': [
+        ['Venues', 'Stadiums, arenas, convention centres and performance spaces \u2014 the ones too big to photograph from the ground.'],
+        ['Facilities', 'Commercial buildings, property and facility teams who need the whole footprint in one view.'],
+        ['Projects', 'Construction and development sites, surveyors and mapping professionals who want current imagery to work from.']
+      ],
+      /* Said once, plainly, so the section cannot be read as a survey claim. */
+      caveat: 'This is visual documentation. It is not a survey, an engineering assessment or architectural documentation, and it carries no measurement certification \u2014 it is imagery your surveyor, engineer or architect can work alongside.' },
 
-    { id: 'commercial',
-      name: 'Commercial',
-      line: 'Developments, portfolios and facilities recorded as they actually stand, for marketing or for the record.',
-      items: ['Development', 'Marketing', 'Documentation'] },
-
-    { id: 'mapping',
-      name: 'Mapping & 3D',
-      line: 'Gridded flights over a whole site, processed into an overhead map, a 3D model, and a walkthrough you can move around inside on a link.',
-      items: ['Aerial mapping', 'Overhead site maps', '3D walkthroughs'] }
+    { id: 'ground',
+      rank: 'secondary',
+      name: 'Standard photography',
+      line: 'Not every job needs a drone. When the shot is better taken from the ground, we take it from the ground.',
+      items: ['On the ground', 'Portraits and interiors', 'Paired with a flight'],
+      'for': [] }
   ];
 
   /* ------------------------------------------------------------- pricing */
