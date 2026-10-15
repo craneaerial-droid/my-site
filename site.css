@@ -317,8 +317,11 @@ main, .nav, footer { position: relative; z-index: 2; }
 }
 .nav__mark i { font-style: normal; color: var(--grey); margin-inline: .24em; font-weight: 500; }
 .nav__links { display: flex; align-items: center; gap: clamp(12px, 2vw, 28px); }
+/* min-width too: "Work" measures 43px, so the target cleared the height
+   floor and still missed the width one. Same fix as the footer links. */
 .nav__links a:not(.btn) {
-  display: inline-flex; align-items: center; min-height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; min-width: 44px;
   font-size: var(--t-label); letter-spacing: .2em; text-transform: uppercase;
   font-weight: 500; color: var(--grey);
   transition: color var(--micro) var(--ease-o);
@@ -677,6 +680,25 @@ select {
    column so ground photography reads as the smaller offer it is.          */
 .svc__row { align-items: start; }
 .svc__head { display: grid; gap: var(--s2); align-content: start; }
+
+/* The drawn figure. Inline SVG in currentColor, so it takes the ink of
+   whatever section it sits in and needs no second colour and no file. It
+   is a diagram, not an image — it carries aria-hidden and the sentence
+   beside it says the same thing in words. */
+.svc__art {
+  width: 100%; max-width: 190px; height: auto;
+  color: var(--mid);
+  margin-bottom: var(--s2);
+  transition: color var(--slow) var(--ease-o);
+}
+.svc__row:hover .svc__art { color: var(--signal); }
+/* Secondary service, smaller figure — the hierarchy holds in the drawing
+   as well as in the type. */
+.svc__row:not(.svc__row--primary) .svc__art { max-width: 140px; }
+@media (max-width: 760px) {
+  .svc__art { max-width: 150px; }
+  .svc__row:not(.svc__row--primary) .svc__art { max-width: 120px; }
+}
 .svc__body { display: grid; gap: var(--s4); }
 
 @media (min-width: 900px) {
@@ -744,3 +766,26 @@ select {
 /* The wordmark is two words rendered as two elements; HTML collapses the
    whitespace between them, so the gap has to be a margin, not a space. */
 .nav__tail { margin-left: .3em; font-weight: 500; color: var(--grey); }
+
+/* --- 21. THE MERGED QUOTE / BOOK / CONTACT SECTION -----------------------
+   Quote, booking and contact used to be three numbered stops. They all
+   answer "how do I start?", so they are one section now, with a hairline
+   and real space where the halves meet instead of a section break.      */
+
+/* The notes that used to sit in the right-hand column of the booking
+   section. On their own now, full width under the calculator. */
+.why__list--flat { margin-top: var(--s7); }
+
+/* The lower half: contact. The rule is the join. */
+.split {
+  margin-top: var(--s8);
+  padding-top: var(--s7);
+  border-top: 1px solid var(--hair);
+}
+.band .split { border-top-color: var(--rule-l); }
+
+/* The phone and email links are set in --bone, which is the page's light
+   ink. Contact now sits inside a BAND, where the background is bone — so
+   without this the two biggest links on the page render invisible. */
+.band .fact a { color: var(--ink); }
+.band .fact a:hover { color: var(--signal-l); }

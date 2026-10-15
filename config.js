@@ -124,23 +124,23 @@ window.CRANE = (function () {
     { id: 'aerial',
       rank: 'primary',
       name: 'Aerial photography & drone video',
-      line: 'Stills, video, or both, flown to the shot you need. A wedding from above, a restaurant at golden hour, a roofline nobody wants to climb to, a site recorded the same way every month.',
+      line: 'Aerial stills and video for weddings, events, property, marketing and site documentation. Shot, edited and handed over.',
       items: ['Stills', 'Cinematic video', 'Events', 'Property', 'Documentation', 'Edited cuts'],
       'for': [
-        ['Personal', 'Weddings and engagements, family gatherings, the milestones worth more than a phone photo.'],
-        ['Events', 'Festivals, concerts, corporate days, venues that need to show the crowd and the setting at once.'],
-        ['Business', 'Restaurants, local companies, agencies, developers, contractors, roofers, real estate and property teams.']
+        ['Personal', 'Weddings, engagements and family gatherings.'],
+        ['Events', 'Festivals, concerts, corporate days and venues.'],
+        ['Business', 'Restaurants, agencies, developers, contractors, roofers, real estate and property teams.']
       ] },
 
     { id: 'imaging',
       rank: 'primary',
       name: '3D imaging & mapping',
-      line: 'A gridded flight over the whole site, processed into an overhead map and a 3D visual model. Built for people who have to understand a space, not just look at a picture of it.',
+      line: 'A gridded flight over the whole site, processed into an overhead map and a 3D model of the space.',
       items: ['Overhead site maps', '3D visual models', 'Gridded flights', 'Spatial documentation'],
       'for': [
-        ['Venues', 'Stadiums, arenas, convention centres and performance spaces \u2014 the ones too big to photograph from the ground.'],
-        ['Facilities', 'Commercial buildings, property and facility teams who need the whole footprint in one view.'],
-        ['Projects', 'Construction and development sites, surveyors and mapping professionals who want current imagery to work from.']
+        ['Venues', 'Stadiums, arenas, convention centres and performance spaces.'],
+        ['Facilities', 'Commercial buildings and property or facility teams needing the full footprint.'],
+        ['Projects', 'Construction and development sites, surveyors and mapping professionals.']
       ],
       /* Said once, plainly, so the section cannot be read as a survey claim. */
       caveat: 'This is visual documentation. It is not a survey, an engineering assessment or architectural documentation, and it carries no measurement certification \u2014 it is imagery your surveyor, engineer or architect can work alongside.' },
@@ -148,7 +148,7 @@ window.CRANE = (function () {
     { id: 'ground',
       rank: 'secondary',
       name: 'Standard photography',
-      line: 'Not every job needs a drone. When the shot is better taken from the ground, we take it from the ground.',
+      line: 'Ground-based photography for jobs that do not need a drone, or to pair with a flight.',
       items: ['On the ground', 'Portraits and interiors', 'Paired with a flight'],
       'for': [] }
   ];

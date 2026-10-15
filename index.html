@@ -81,7 +81,7 @@
           <p class="lead">Aerial photography and 3D imaging for people and businesses. A wedding, a restaurant, a roofline, a stadium &mdash; flown, shot and handed over.</p>
           <div class="btn-row">
             <a class="btn btn--solid" href="#quote"><span>Get a quote</span></a>
-            <a class="btn" href="#book"><span>Book a shoot</span></a>
+            <a class="btn" href="#contact"><span>Talk to us</span></a>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@
         <p class="label label--sig">01 &mdash; Services</p>
         <p class="label">Three things</p>
       </div>
-      <h2 class="statement">Two things we lead with, one we keep on hand.</h2>
+      <h2 class="statement">What we do.</h2>
     </div>
 
     <div class="svc" id="svc">
@@ -160,7 +160,7 @@
         <p class="label label--sig">03 &mdash; The work</p>
         <p class="label">Recent frames</p>
       </div>
-      <h2 class="statement">Show the property from where people can&rsquo;t stand.</h2>
+      <h2 class="statement">Kansas City, from the air.</h2>
     </div>
   </div>
 
@@ -187,9 +187,19 @@
   </div>
 </section>
 
-<!-- =========================== BUILD YOUR SHOOT =======================
-     The band again. The calculator, the quote request, the booking
-     request and the scope agreement all live in here.
+<!-- =================== GET A QUOTE, BOOK, AND CONTACT =================
+     One section, not three. The calculator, the booking notes and the
+     contact details all answer the same question — "how do I start?" —
+     so splitting them across three numbered stops just made the visitor
+     scroll past two of them.
+
+     The three notes under the calculator describe what the booking flow
+     ACTUALLY does: the estimate is attached to the request, the calendar
+     link writes a provisional block and nothing more, and the figure is a
+     starting price. If that behaviour changes in quote.js, change these.
+
+     id="contact" is kept on the lower half so every existing link to it,
+     in the nav, the footer and the service rows, still lands.
 -->
 <section class="section band" id="quote">
   <div class="wrap">
@@ -198,108 +208,79 @@
         <p class="label label--sig">04 &mdash; Get a quote</p>
         <p class="label">Six questions</p>
       </div>
-      <h2 class="statement">Pick what you need. The number moves as you go.</h2>
+      <h2 class="statement">Build an estimate, then pick a time.</h2>
     </div>
+
     <div id="calc" data-r><!-- built from quote.js --></div>
-  </div>
-</section>
 
-<!-- ============================== BOOK ================================
-     The three notes on the right describe what the booking flow ACTUALLY
-     does — the estimate is attached to the request, the calendar link writes
-     a provisional block and nothing more, and the figure is a starting
-     price. If that behaviour changes in quote.js, change these too.
--->
-<section class="section" id="book">
-  <div class="wrap">
-    <div class="head" data-r>
-      <div class="head__top">
-        <p class="label label--sig">05 &mdash; Book</p>
-        <p class="label">Service &middot; Date &middot; Time &middot; Location</p>
-      </div>
-      <h2 class="statement">Pick a time from the calendar, or send the details and we&rsquo;ll come back.</h2>
-    </div>
+    <ul class="why__list why__list--flat" data-r>
+      <li><b>What we get</b><span>Service, size, add-ons, date, time window and location, in one go.</span></li>
+      <li><b>The calendar hold</b><span>The link puts a provisional block in your calendar. Nothing is confirmed until we write back.</span></li>
+      <li><b>The figure</b><span>A starting price. The final quote comes after we have seen the site.</span></li>
+    </ul>
 
-    <div class="why">
-      <div data-r>
-        <p class="lead">Booking runs through the estimate above &mdash; build the shoot, then choose <em>Schedule a project</em>. Your selections travel with it, so we already know the job before we reply.</p>
-        <div class="btn-row" style="margin-top:var(--s5)">
-          <a class="btn btn--solid" href="#quote"><span>Start with the estimate</span></a>
+    <div class="split" id="contact">
+      <div class="head" data-r style="margin-bottom:var(--s5)">
+        <div class="head__top">
+          <p class="label label--sig">Or just ask</p>
+          <p class="label">We come to you</p>
         </div>
+        <h2 class="statement">Tell us about the project.</h2>
       </div>
 
-      <ul class="why__list" data-r>
-        <li><b>What we get</b><span>Service, size, add-ons, date, time window and location &mdash; all of it, in one go.</span></li>
-        <li><b>The calendar hold</b><span>The link drops a provisional block into your own calendar. Nothing is confirmed until we write back.</span></li>
-        <li><b>The figure</b><span>Where the job starts, not where it lands. The real quote follows once we have seen the site.</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== CONTACT ============================= -->
-<section class="section" id="contact">
-  <div class="wrap">
-    <div class="head" data-r>
-      <div class="head__top">
-        <p class="label label--sig">06 &mdash; Contact</p>
-        <p class="label">We come to you</p>
-      </div>
-      <h2 class="statement">Have a project in mind?</h2>
-    </div>
-
-    <div class="contact__grid">
-      <div class="contact__facts" data-r>
-        <div class="fact" data-fact="phone" hidden>
-          <span class="label">Phone</span>
-          <p><a data-site="phoneLink"></a></p>
+      <div class="contact__grid">
+        <div class="contact__facts" data-r>
+          <div class="fact" data-fact="phone" hidden>
+            <span class="label">Phone</span>
+            <p><a data-site="phoneLink"></a></p>
+          </div>
+          <div class="fact" data-fact="email" hidden>
+            <span class="label">Email</span>
+            <p><a data-site="emailLink"></a></p>
+          </div>
+          <div class="fact">
+            <span class="label">Where we fly</span>
+            <p style="font-size:1.1rem" data-site="areaShort"></p>
+            <p class="dim" style="font-size:.92rem" data-site="areaLong"></p>
+          </div>
         </div>
-        <div class="fact" data-fact="email" hidden>
-          <span class="label">Email</span>
-          <p><a data-site="emailLink"></a></p>
-        </div>
-        <div class="fact">
-          <span class="label">Where we fly</span>
-          <p style="font-size:1.1rem" data-site="areaShort"></p>
-          <p class="dim" style="font-size:.92rem" data-site="areaLong"></p>
-        </div>
-      </div>
 
-      <div data-r>
-        <form class="form" id="contact-form" novalidate>
-          <div class="row2">
-            <div class="field">
-              <label for="c-name">Name</label>
-              <input id="c-name" name="name" type="text" autocomplete="name" required>
+        <div data-r>
+          <form class="form" id="contact-form" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="c-name">Name</label>
+                <input id="c-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="c-email">Email</label>
+                <input id="c-email" name="email" type="email" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="c-phone">Phone</label>
+                <input id="c-phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="c-type">Project type</label>
+                <select id="c-type" name="projectType"><!-- built from config.js --></select>
+              </div>
             </div>
             <div class="field">
-              <label for="c-email">Email</label>
-              <input id="c-email" name="email" type="email" autocomplete="email" required>
-            </div>
-          </div>
-          <div class="row2">
-            <div class="field">
-              <label for="c-phone">Phone</label>
-              <input id="c-phone" name="phone" type="tel" autocomplete="tel">
+              <label for="c-loc">Project location</label>
+              <input id="c-loc" name="location" type="text" placeholder="Address, neighbourhood, or city">
             </div>
             <div class="field">
-              <label for="c-type">Project type</label>
-              <select id="c-type" name="projectType"><!-- built from config.js --></select>
+              <label for="c-msg">What are you working on?</label>
+              <textarea id="c-msg" name="message" required></textarea>
             </div>
-          </div>
-          <div class="field">
-            <label for="c-loc">Project location</label>
-            <input id="c-loc" name="location" type="text" placeholder="Address, neighbourhood, or city">
-          </div>
-          <div class="field">
-            <label for="c-msg">What are you working on?</label>
-            <textarea id="c-msg" name="message" required></textarea>
-          </div>
-          <div class="btn-row" style="margin-top:var(--s3)">
-            <button class="btn btn--solid" type="submit"><span>Send it</span></button>
-          </div>
-          <div id="contact-out" aria-live="polite"></div>
-        </form>
+            <div class="btn-row" style="margin-top:var(--s3)">
+              <button class="btn btn--solid" type="submit"><span>Send it</span></button>
+            </div>
+            <div id="contact-out" aria-live="polite"></div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -313,14 +294,13 @@
     <div class="foot" data-r>
       <div>
         <p class="h2" style="max-width:none">Crane<br>Productions</p>
-        <small class="dim" style="display:block;margin-top:var(--s3);max-width:46ch">Started in retail photography and went out on its own in 2023. Chicago, St. Louis and Kansas City &mdash; and on the road most weeks.</small>
+        <small class="dim" style="display:block;margin-top:var(--s3);max-width:46ch">Started in retail photography and went out on its own in 2023. Chicago, St. Louis and Kansas City, and we travel.</small>
       </div>
       <div class="foot__links">
         <a href="#services">Services</a>
         <a href="#travel">Where we go</a>
         <a href="#work">Work</a>
         <a href="#quote">Get a quote</a>
-        <a href="#book">Book</a>
         <a href="#contact">Contact</a>
       </div>
     </div>

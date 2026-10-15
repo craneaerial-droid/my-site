@@ -80,6 +80,54 @@
   }
 
   /* --------------------------------------------------------- 2. services */
+  /* Drawn figures, one per service, keyed by SERVICES[].id.
+
+     These are diagrams, not decoration and not photography. Each one shows
+     the thing the sentence next to it is describing — where the camera is,
+     and what it is looking at. Line art in currentColor so it inherits the
+     section's ink and needs no second colour; no files, so nothing to load
+     and nothing to 404. A service id with no entry here simply renders
+     without a figure. */
+  var SVC_ART = {
+    /* Camera above the subject, looking down. */
+    aerial:
+      '<path d="M82 26h36"/>' +
+      '<circle cx="82" cy="26" r="7"/><circle cx="118" cy="26" r="7"/>' +
+      '<rect x="92" y="21.5" width="16" height="9" rx="2"/>' +
+      '<path d="M96 30.5l-3 5M104 30.5l3 5"/>' +
+      '<path d="M100 36L42 94M100 36l58 58" stroke-dasharray="3 4" opacity=".5"/>' +
+      '<path d="M16 94h168"/>' +
+      '<path d="M78 94V68h30v26M86 94V78h14v16"/>',
+
+    /* The gridded flight itself, seen from above: corner brackets for the
+       site, and the boustrophedon the drone actually flies across it.
+       Drawn in plan rather than perspective — a first attempt in
+       perspective read as a stack of bars, not as lines over an area. */
+    imaging:
+      '<path d="M24 36V22h16M160 22h16v14M176 84v14h-16M40 98H24V84" opacity=".5"/>' +
+      '<path d="M44 40H156V58H44V76H156"/>' +
+      '<circle cx="44" cy="40" r="2.6" fill="currentColor" stroke="none"/>' +
+      '<circle cx="156" cy="76" r="2.6" fill="currentColor" stroke="none"/>',
+
+    /* The same subject, camera on the ground — the contrast is the point. */
+    ground:
+      '<path d="M16 94h168"/>' +
+      '<rect x="34" y="52" width="26" height="16" rx="2"/>' +
+      '<circle cx="47" cy="60" r="5"/>' +
+      '<path d="M47 68l-11 26M47 68l11 26M47 68v26"/>' +
+      '<path d="M64 60h82" stroke-dasharray="3 4" opacity=".5"/>' +
+      '<path d="M150 94V60h26v34M158 94V70h10v24"/>'
+  };
+
+  function art(id) {
+    var d = SVC_ART[id];
+    if (!d) return '';
+    return '<svg class="svc__art" viewBox="0 0 200 120" fill="none" ' +
+           'stroke="currentColor" stroke-width="1.3" stroke-linecap="round" ' +
+           'stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+           d + '</svg>';
+  }
+
   function services() {
     var list = $('#svc-list');
     if (!list) return;
@@ -107,6 +155,7 @@
                '" id="svc-' + esc(s.id) + '" data-r>' +
                '<span class="num svc__n">' + (n.length < 2 ? '0' + n : n) + '</span>' +
                '<div class="svc__head">' +
+                 art(s.id) +
                  '<h3 class="svc__name">' + esc(s.name) + '</h3>' +
                  (items ? '<ul class="svc__list">' + items + '</ul>' : '') +
                '</div>' +
